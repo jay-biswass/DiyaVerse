@@ -3,6 +3,8 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Music, Play, Pause, Volume2, VolumeX, Sparkles, ExternalLink } from "lucide-react";
 
+import { sound } from "@/lib/sound";
+
 const YOUTUBE_VIDEO_ID = "Kuq3vDEkWJo"; // User requested song: https://youtu.be/Kuq3vDEkWJo
 
 const MusicContext = createContext({
@@ -94,9 +96,26 @@ export function MusicProvider({ children }) {
     window.addEventListener("pointerdown", handleFirstGesture, { once: true });
     window.addEventListener("keydown", handleFirstGesture, { once: true });
 
+    // 4. Global button click listener: Play "Heppy Diwali.mp3" on any button or CTA click
+    const handleGlobalButtonClick = (e) => {
+      const target = e.target;
+      if (!target) return;
+      const isButton =
+        target.closest("button") ||
+        target.closest("a[role='button']") ||
+        (target.tagName === "BUTTON");
+
+      if (isButton) {
+        sound.playButtonClickSound();
+      }
+    };
+
+    window.addEventListener("click", handleGlobalButtonClick, true);
+
     return () => {
       window.removeEventListener("pointerdown", handleFirstGesture);
       window.removeEventListener("keydown", handleFirstGesture);
+      window.removeEventListener("click", handleGlobalButtonClick, true);
     };
   }, []);
 
