@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-import { SAMPLE_WISHES } from "@/data/greetings";
+import { getRandomPresetWish } from "@/data/presetWishes";
 
 export async function POST(request) {
   try {
@@ -70,18 +70,12 @@ Rules:
     }
 
     // Graceful Intelligent Fallback if API key is not yet set or during offline review
-    const preset =
-      SAMPLE_WISHES[safeLanguage]?.[safeTone] ||
-      SAMPLE_WISHES["English"]["Traditional"];
-
-    let customFallback = "";
-    if (safeLanguage === "Hindi") {
-      customFallback = `प्रिय ${safeRecipient}, दीपावली के इस पावन अवसर पर आपके जीवन में सुख, शांति, समृद्धि और अपार सफलता की कामना करता हूँ। भगवान श्री गणेश और मां लक्ष्मी का आशीर्वाद आप पर सदा बना रहे। शुभ दीपावली! — ${safeSender}`;
-    } else if (safeLanguage === "Bengali") {
-      customFallback = `প্রিয় ${safeRecipient}, শুভ দীপাবলির আন্তরিক প্রীতি ও উষ্ণ শুভেচ্ছা। প্রদীপের আলোয় আপনার জীবন হয়ে উঠুক আনন্দময় ও সাফল্যমণ্ডিত। পরিবারসহ আপনার সুস্বাস্থ্য ও সমৃদ্ধি কামনা করি। — ${safeSender}`;
-    } else {
-      customFallback = `Dearest ${safeRecipient}, on this joyous festival of lights, may every diya illuminate your journey with happiness, good health, and boundless opportunities. Wishing you and your family a truly blessed and prosperous Diwali! With warm regards, ${safeSender}.`;
-    }
+    const customFallback = getRandomPresetWish({
+      tone: safeTone,
+      language: safeLanguage,
+      recipient: safeRecipient,
+      sender: safeSender,
+    });
 
     return NextResponse.json({
       success: true,

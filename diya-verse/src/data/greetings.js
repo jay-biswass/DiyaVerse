@@ -86,6 +86,63 @@ export const STYLES = [
   "Inspirational",
 ];
 
+export const CARD_FONTS = [
+  {
+    id: "royal-serif",
+    name: "Royal Serif",
+    fontClass: "font-playfair",
+    devanagariClass: "font-devanagari",
+    bengaliClass: "font-bengali",
+    sample: "आ / অ / Aa",
+    description: "Classic, regal serif typography"
+  },
+  {
+    id: "festive-ornate",
+    name: "Festive Ornate",
+    fontClass: "font-rozha",
+    devanagariClass: "font-rozha",
+    bengaliClass: "font-bengali",
+    sample: "दीप / আলো / Joy",
+    description: "Grand Indian festive headline style"
+  },
+  {
+    id: "warm-handwritten",
+    name: "Warm Handwritten",
+    fontClass: "font-kalam",
+    devanagariClass: "font-kalam",
+    bengaliClass: "font-bengali",
+    sample: "हृदय / ভালোবাসা / Heart",
+    description: "Authentic handwritten greeting feel"
+  },
+  {
+    id: "temple-classic",
+    name: "Temple Classic",
+    fontClass: "font-yatra",
+    devanagariClass: "font-yatra",
+    bengaliClass: "font-bengali",
+    sample: "शुभ / মঙ্গল / Grace",
+    description: "Traditional auspicious signage script"
+  },
+  {
+    id: "poetic-cursive",
+    name: "Poetic Cursive",
+    fontClass: "font-great-vibes",
+    devanagariClass: "font-kalam",
+    bengaliClass: "font-bengali",
+    sample: "Sparkle / प्रेम",
+    description: "Flowing celebratory elegance"
+  },
+  {
+    id: "modern-festive",
+    name: "Modern Festive",
+    fontClass: "font-poppins",
+    devanagariClass: "font-devanagari",
+    bengaliClass: "font-hind",
+    sample: "दीपावली / Diwali",
+    description: "Clean, balanced contemporary look"
+  },
+];
+
 export const FESTIVE_QUOTES = [
   {
     quote: "May your life shine brighter than a thousand diyas and fill your home with infinite joy and peace.",

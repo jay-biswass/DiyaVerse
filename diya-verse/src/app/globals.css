@@ -39,6 +39,34 @@
   font-family: var(--font-devanagari), 'Noto Serif Devanagari', serif;
 }
 
+.font-rozha {
+  font-family: 'Rozha One', var(--font-devanagari), Georgia, serif;
+}
+
+.font-kalam {
+  font-family: 'Kalam', cursive, sans-serif;
+}
+
+.font-yatra {
+  font-family: 'Yatra One', var(--font-devanagari), cursive, serif;
+}
+
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.font-bengali {
+  font-family: 'Noto Serif Bengali', 'Hind Siliguri', serif;
+}
+
+.font-hind {
+  font-family: 'Hind Siliguri', system-ui, sans-serif;
+}
+
 body {
   background-color: #27100D;
   background-image: 

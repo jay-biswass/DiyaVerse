@@ -9,8 +9,10 @@ import {
   RELATIONSHIPS, 
   LANGUAGES, 
   STYLES, 
-  SAMPLE_WISHES 
+  SAMPLE_WISHES,
+  CARD_FONTS
 } from "@/data/greetings";
+import { getRandomPresetWish, getDefaultPresetWish } from "@/data/presetWishes";
 import { sound } from "@/lib/sound";
 import { 
   Download, 
@@ -36,8 +38,14 @@ export default function GreetingPage() {
   const [language, setLanguage] = useState("English");
   const [style, setStyle] = useState("Traditional");
   const [template, setTemplate] = useState("royal-gold");
-  const [message, setMessage] = useState(
-    SAMPLE_WISHES["English"]["Traditional"]
+  const [cardFont, setCardFont] = useState("royal-serif");
+  const [message, setMessage] = useState(() =>
+    getDefaultPresetWish({
+      tone: "Traditional",
+      language: "English",
+      recipient: "Priya",
+      sender: "Aarav",
+    })
   );
 
   // Status states
@@ -46,12 +54,16 @@ export default function GreetingPage() {
   const [copiedMessage, setCopiedMessage] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
 
-  // Update sample message when language or style changes
-  const applyPresetWish = (lang = language, st = style) => {
+  // Update wish with rich preset wish collection
+  const applyPresetWish = (lang = language, st = style, rec = recipient, snd = sender) => {
     sound.playDiyaSound();
-    const wish =
-      SAMPLE_WISHES[lang]?.[st] ||
-      SAMPLE_WISHES["English"]["Traditional"];
+    const wish = getRandomPresetWish({
+      tone: st,
+      language: lang,
+      recipient: rec,
+      sender: snd,
+      currentWish: message,
+    });
     setMessage(wish);
   };
 
@@ -64,6 +76,7 @@ export default function GreetingPage() {
         rel: relationship,
         l: language,
         t: template,
+        f: cardFont,
         m: message,
       };
       const encoded = encodeURIComponent(
@@ -71,7 +84,7 @@ export default function GreetingPage() {
       );
       setShareUrl(`${window.location.origin}/greeting/view?card=${encoded}`);
     }
-  }, [sender, recipient, relationship, language, template, message]);
+  }, [sender, recipient, relationship, language, template, cardFont, message]);
 
   // Download Card as PNG using html-to-image
   const handleDownload = async () => {
@@ -154,13 +167,21 @@ export default function GreetingPage() {
   // Reset form
   const handleReset = () => {
     sound.playDiyaSound();
-    setSender("");
-    setRecipient("");
+    setSender("Aarav");
+    setRecipient("Priya");
     setRelationship("Friend");
     setLanguage("English");
     setStyle("Traditional");
     setTemplate("royal-gold");
-    setMessage(SAMPLE_WISHES["English"]["Traditional"]);
+    setCardFont("royal-serif");
+    setMessage(
+      getDefaultPresetWish({
+        tone: "Traditional",
+        language: "English",
+        recipient: "Priya",
+        sender: "Aarav",
+      })
+    );
   };
 
   return (
@@ -255,7 +276,7 @@ export default function GreetingPage() {
                 onChange={(e) => {
                   const newLang = e.target.value;
                   setLanguage(newLang);
-                  applyPresetWish(newLang, style);
+                  applyPresetWish(newLang, style, recipient, sender);
                 }}
                 className="w-full px-3 py-2.5 rounded-xl bg-[#27100D]/80 border border-[#D4A64A]/30 text-[#F5E6C8] focus:outline-none focus:border-[#D4A64A] text-sm cursor-pointer"
               >
@@ -276,7 +297,7 @@ export default function GreetingPage() {
                 onChange={(e) => {
                   const newStyle = e.target.value;
                   setStyle(newStyle);
-                  applyPresetWish(language, newStyle);
+                  applyPresetWish(language, newStyle, recipient, sender);
                 }}
                 className="w-full px-3 py-2.5 rounded-xl bg-[#27100D]/80 border border-[#D4A64A]/30 text-[#F5E6C8] focus:outline-none focus:border-[#D4A64A] text-sm cursor-pointer"
               >
@@ -289,7 +310,7 @@ export default function GreetingPage() {
             </div>
           </div>
 
-          {/* Theme Selector (6 Templates) */}
+          {/* Theme Selector (6 Designs) */}
           <div>
             <label className="block text-xs font-medium text-[#F5D79D] uppercase tracking-wider mb-2">
               Select Festive Card Theme (6 Designs)
@@ -318,6 +339,45 @@ export default function GreetingPage() {
             </div>
           </div>
 
+          {/* Festive Typography & Card Fonts Selector */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-xs font-medium text-[#F5D79D] uppercase tracking-wider">
+                Festive Typography & Fonts
+              </label>
+              <span className="text-[11px] text-[#D4A64A] font-medium">
+                {CARD_FONTS.find((f) => f.id === cardFont)?.name}
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {CARD_FONTS.map((font) => (
+                <button
+                  key={font.id}
+                  type="button"
+                  onClick={() => {
+                    sound.playDiyaSound();
+                    setCardFont(font.id);
+                  }}
+                  className={`p-2.5 rounded-xl text-left border transition-all duration-200 ${
+                    cardFont === font.id
+                      ? "border-[#D4A64A] bg-[#54151F] shadow-md shadow-[#D4A64A]/30 scale-[1.02]"
+                      : "border-white/10 bg-[#27100D]/60 hover:border-[#D4A64A]/40"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-0.5">
+                    <p className="font-semibold text-xs text-[#F5D79D] truncate">{font.name}</p>
+                    <span className="text-[10px] text-[#D4A64A] px-1 py-0.2 rounded bg-black/40 font-devanagari">
+                      {font.sample}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-[#F5E6C8]/60 line-clamp-1">
+                    {font.description}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Message Textarea */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
@@ -326,10 +386,11 @@ export default function GreetingPage() {
               </label>
               <button
                 type="button"
-                onClick={() => applyPresetWish(language, style)}
-                className="text-xs text-[#D4A64A] hover:underline flex items-center gap-1"
+                onClick={() => applyPresetWish(language, style, recipient, sender)}
+                className="text-xs text-[#D4A64A] hover:text-[#F5D79D] hover:underline flex items-center gap-1 font-semibold transition-colors active:scale-95"
+                title="Click to generate another heartfelt Diwali wish in this tone & language"
               >
-                <Sparkles className="w-3 h-3" />
+                <Sparkles className="w-3.5 h-3.5 text-[#D4A64A] animate-pulse" />
                 Regenerate Preset Wish
               </button>
             </div>
@@ -354,6 +415,7 @@ export default function GreetingPage() {
               relationship={relationship}
               language={language}
               template={template}
+              cardFont={cardFont}
               message={message}
             />
           </div>

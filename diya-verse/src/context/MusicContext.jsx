@@ -218,7 +218,7 @@ export function MusicProvider({ children }) {
                 </span>
               </span>
               <span className="text-[9px] text-[#F5E6C8]/60 font-light truncate max-w-[140px]">
-                Ram Siya Ram / Festive Melody
+                Happy Diwali / Festive Melody
               </span>
             </div>
           </button>

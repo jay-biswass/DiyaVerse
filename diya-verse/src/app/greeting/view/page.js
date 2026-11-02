@@ -18,6 +18,7 @@ function GreetingViewerContent() {
     rel: "Friend",
     l: "English",
     t: "royal-gold",
+    f: "royal-serif",
     m: "Wishing you and your family a blessed and illuminated Diwali! May the divine lights guide your journey towards endless happiness and success.",
   });
   const [isDownloading, setIsDownloading] = useState(false);
@@ -88,6 +89,7 @@ function GreetingViewerContent() {
           language={cardData.l}
           template={cardData.t}
           message={cardData.m}
+          cardFont={cardData.f || "royal-serif"}
         />
       </div>
 

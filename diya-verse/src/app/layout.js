@@ -69,6 +69,14 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfair.variable} ${cinzel.variable} ${poppins.variable} ${notoDevanagari.variable} h-full scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Great+Vibes&family=Hind+Siliguri:wght@400;600;700&family=Kalam:wght@400;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Rozha+One&family=Yatra+One&display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col font-poppins selection:bg-[#8F2028] selection:text-[#F5D79D]">
         <MusicProvider>
           <Navbar />
