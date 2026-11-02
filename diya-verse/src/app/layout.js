@@ -52,6 +52,12 @@ export const metadata = {
     siteName: "DiyaVerse",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {

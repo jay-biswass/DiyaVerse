@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <!-- Radiant Outer Flame Glow -->
+    <radialGradient id="flameGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stopColor="#FFF2A3" stopOpacity="0.8"/>
+      <stop offset="50%" stopColor="#F5A623" stopOpacity="0.5"/>
+      <stop offset="100%" stopColor="#D0021B" stopOpacity="0"/>
+    </radialGradient>
+
+    <!-- Core Flame Gradient -->
+    <radialGradient id="flameCore" cx="50%" cy="65%" r="60%">
+      <stop offset="0%" stopColor="#FFFFFF" />
+      <stop offset="25%" stopColor="#FFF275" />
+      <stop offset="65%" stopColor="#FF9100" />
+      <stop offset="100%" stopColor="#D50000" />
+    </radialGradient>
+
+    <!-- Clay Base Gradient -->
+    <linearGradient id="clayBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#8F2028" />
+      <stop offset="50%" stopColor="#54151F" />
+      <stop offset="100%" stopColor="#27100D" />
+    </linearGradient>
+
+    <!-- Gold Rim Gradient -->
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#D4A64A" />
+      <stop offset="50%" stopColor="#F5D79D" />
+      <stop offset="100%" stopColor="#D4A64A" />
+    </linearGradient>
+
+    <!-- Sacred Ghee Pool -->
+    <linearGradient id="oilPool" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#FFAB40" />
+      <stop offset="100%" stopColor="#E65100" />
+    </linearGradient>
+  </defs>
+
+  <!-- Glowing Aura -->
+  <circle cx="50" cy="40" r="32" fill="url(#flameGlow)" />
+
+  <!-- Outer Flame Body -->
+  <path
+    d="M50 8 C42 22 36 34 36 46 C36 55 42 61 50 61 C58 61 64 55 64 46 C64 34 58 22 50 8 Z"
+    fill="url(#flameCore)"
+  />
+
+  <!-- Inner Hot Flame Seed -->
+  <ellipse cx="50" cy="47" rx="5" ry="9" fill="#FFFFFF" opacity="0.95" />
+
+  <!-- Wick -->
+  <path d="M50 48 Q49 53 48 57" stroke="#27100D" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Diya Base Shadow -->
+  <ellipse cx="50" cy="94" rx="34" ry="5" fill="#000000" opacity="0.4" />
+
+  <!-- Diya Clay Body -->
+  <path
+    d="M12 58 C16 80 30 92 50 92 C70 92 84 80 88 58 C80 61 65 62 50 62 C35 62 20 61 12 58 Z"
+    fill="url(#clayBase)"
+    stroke="url(#goldRim)"
+    stroke-width="2"
+  />
+
+  <!-- Traditional Golden Carvings on Clay -->
+  <path
+    d="M24 69 Q37 81 50 81 Q63 81 76 69"
+    stroke="#F5D79D"
+    stroke-width="1.5"
+    stroke-dasharray="3 3"
+    fill="none"
+  />
+  <circle cx="50" cy="81" r="2.5" fill="#F5D79D" />
+  <circle cx="38" cy="77" r="2" fill="#F5D79D" />
+  <circle cx="62" cy="77" r="2" fill="#F5D79D" />
+
+  <!-- Diya Basin Rim -->
+  <ellipse
+    cx="50"
+    cy="58"
+    rx="38"
+    ry="9"
+    fill="url(#clayBase)"
+    stroke="url(#goldRim)"
+    stroke-width="2.5"
+  />
+
+  <!-- Golden Ghee / Sacred Oil Pool -->
+  <ellipse
+    cx="50"
+    cy="59"
+    rx="32"
+    ry="6.5"
+    fill="url(#oilPool)"
+  />
+
+  <!-- Oil Reflection Highlight -->
+  <ellipse
+    cx="48"
+    cy="58"
+    rx="18"
+    ry="3"
+    fill="#FFF9C4"
+    opacity="0.8"
+  />
+
+  <!-- Golden Pedestal Base -->
+  <path
+    d="M36 92 Q50 95 64 92 L66 96 Q50 99 34 96 Z"
+    fill="url(#goldRim)"
+  />
+</svg>
