@@ -2,6 +2,9 @@
   "name": "diyaverse-root",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "diya-verse"
+  ],
   "scripts": {
     "dev": "npm --prefix diya-verse run dev",
     "build": "npm --prefix diya-verse run build",
