@@ -259,9 +259,3 @@ diya-verse/
 
 ---
 
-## 🔐 Environment & Security
-
-- Keep API keys in environment variables.
-- Never commit `.env.local`.
-- Keep Gemini API calls on the server side.
-
