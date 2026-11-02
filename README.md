@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="./diya-verse/public/images/diya-verse-banner.png"
+    src="./diya-verse/public/images/diya-verse-bannner.png"
     alt="DiyaVerse Banner"
     width="100%"
   />
@@ -136,11 +136,11 @@ Add screenshots of your actual application here.
 
 | Homepage | Greeting Creator |
 |---|---|
-| ![Homepage](screenshots/homepage.png) | ![Greeting Creator](screenshots/greeting-creator.png) |
+| ![Homepage](./diya-verse/public/images/homepage.png) | ![Greeting Creator](./diya-verse/public/images/greeting-creator.png) |
 
 | Diya Altar | Fireworks Celebration |
 |---|---|
-| ![Diya Altar](screenshots/diya-altar.png) | ![Fireworks](screenshots/fireworks.png) |
+| ![Diya Altar](./diya-verse/public/images/diya-altar.png) | ![Fireworks](./diya-verse/public/images/fireworks.png) |
 
 ---
 
