@@ -1,4 +1,5 @@
 import HeroSection from "@/components/home/HeroSection";
+import DiwaliCountdown from "@/components/home/DiwaliCountdown";
 import DiyaCounterSection from "@/components/home/DiyaCounterSection";
 import FeatureShowcase from "@/components/home/FeatureShowcase";
 import FestiveQuotesSection from "@/components/home/FestiveQuotesSection";
@@ -11,13 +12,16 @@ export default function HomePage() {
       {/* 1. Spectacular Hero Section */}
       <HeroSection />
 
-      {/* 2. Interactive Diya Counter Altar */}
+      {/* 2. Premium Live Diwali Countdown Timer */}
+      <DiwaliCountdown />
+
+      {/* 3. Interactive Diya Counter Altar */}
       <DiyaCounterSection />
 
-      {/* 3. Feature Showcase */}
+      {/* 4. Feature Showcase */}
       <FeatureShowcase />
 
-      {/* 4. Rotating Festive Message Section */}
+      {/* 5. Rotating Festive Message Section */}
       <FestiveQuotesSection />
 
       {/* 5. Pre-footer Call to Action Banner */}
