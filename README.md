@@ -264,5 +264,4 @@ diya-verse/
 - Keep API keys in environment variables.
 - Never commit `.env.local`.
 - Keep Gemini API calls on the server side.
-- Configure appropriate Firebase Firestore security rules.
-- Validate user input before
+
