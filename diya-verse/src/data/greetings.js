@@ -1,65 +1,6 @@
-export const TEMPLATES = [
-  {
-    id: "royal-gold",
-    name: "Royal Gold",
-    description: "Luxurious gold filigree borders on regal deep maroon velvet",
-    bgClass: "bg-gradient-to-br from-[#54151F] via-[#351014] to-[#27100D]",
-    borderClass: "border-2 border-[#D4A64A]",
-    accentColor: "#D4A64A",
-    textClass: "text-[#F5E6C8]",
-    tagline: "Shree Lakshmi - Ganesha Krupa",
-  },
-  {
-    id: "traditional-diya",
-    name: "Traditional Diya",
-    description: "Warm auspicious earthen lamp illustration with sacred radiance",
-    bgClass: "bg-gradient-to-b from-[#351014] via-[#54151F] to-[#27100D]",
-    borderClass: "border-2 border-[#E68A32]",
-    accentColor: "#E68A32",
-    textClass: "text-[#F5D79D]",
-    tagline: "Tamaso Ma Jyotirgamaya",
-  },
-  {
-    id: "rangoli-celebration",
-    name: "Rangoli Celebration",
-    description: "Intricate multi-colored geometric mandala and festive motifs",
-    bgClass: "bg-gradient-to-tr from-[#253D36] via-[#351014] to-[#8F2028]",
-    borderClass: "border-2 border-[#F5D79D]",
-    accentColor: "#F5D79D",
-    textClass: "text-[#F5E6C8]",
-    tagline: "Colours of Joy & Prosperity",
-  },
-  {
-    id: "floral-diwali",
-    name: "Floral Diwali",
-    description: "Auspicious marigold garlands and sacred toran blooms",
-    bgClass: "bg-gradient-to-br from-[#8F2028] via-[#54151F] to-[#E68A32]/30",
-    borderClass: "border-2 border-[#E68A32]",
-    accentColor: "#E68A32",
-    textClass: "text-[#F5E6C8]",
-    tagline: "Fragrance of Festivity & Peace",
-  },
-  {
-    id: "minimal-elegance",
-    name: "Minimal Elegance",
-    description: "Subtle modern luxury with fine golden foil geometric lines",
-    bgClass: "bg-gradient-to-b from-[#1c0a0c] via-[#27100D] to-[#120506]",
-    borderClass: "border border-[#D4A64A]/60",
-    accentColor: "#D4A64A",
-    textClass: "text-[#F5E6C8]",
-    tagline: "Pure Grace & Illuminated Blessings",
-  },
-  {
-    id: "festive-fireworks",
-    name: "Festive Fireworks",
-    description: "Midnight celebration sky filled with golden sparkle bursts",
-    bgClass: "bg-gradient-to-b from-[#0a0612] via-[#200c25] to-[#351014]",
-    borderClass: "border-2 border-[#F5D79D]",
-    accentColor: "#F5D79D",
-    textClass: "text-[#F5E6C8]",
-    tagline: "Endless Sparkles & Infinite Smiles",
-  },
-];
+import { TEMPLATES, CARD_FONTS, CARD_CATEGORIES } from "./cardTemplates.js";
+
+export { TEMPLATES, CARD_FONTS, CARD_CATEGORIES };
 
 export const RELATIONSHIPS = [
   "Friend",
@@ -84,63 +25,6 @@ export const STYLES = [
   "Funny",
   "Professional",
   "Inspirational",
-];
-
-export const CARD_FONTS = [
-  {
-    id: "royal-serif",
-    name: "Royal Serif",
-    fontClass: "font-playfair",
-    devanagariClass: "font-devanagari",
-    bengaliClass: "font-bengali",
-    sample: "आ / অ / Aa",
-    description: "Classic, regal serif typography"
-  },
-  {
-    id: "festive-ornate",
-    name: "Festive Ornate",
-    fontClass: "font-rozha",
-    devanagariClass: "font-rozha",
-    bengaliClass: "font-bengali",
-    sample: "दीप / আলো / Joy",
-    description: "Grand Indian festive headline style"
-  },
-  {
-    id: "warm-handwritten",
-    name: "Warm Handwritten",
-    fontClass: "font-kalam",
-    devanagariClass: "font-kalam",
-    bengaliClass: "font-bengali",
-    sample: "हृदय / ভালোবাসা / Heart",
-    description: "Authentic handwritten greeting feel"
-  },
-  {
-    id: "temple-classic",
-    name: "Temple Classic",
-    fontClass: "font-yatra",
-    devanagariClass: "font-yatra",
-    bengaliClass: "font-bengali",
-    sample: "शुभ / মঙ্গল / Grace",
-    description: "Traditional auspicious signage script"
-  },
-  {
-    id: "poetic-cursive",
-    name: "Poetic Cursive",
-    fontClass: "font-great-vibes",
-    devanagariClass: "font-kalam",
-    bengaliClass: "font-bengali",
-    sample: "Sparkle / प्रेम",
-    description: "Flowing celebratory elegance"
-  },
-  {
-    id: "modern-festive",
-    name: "Modern Festive",
-    fontClass: "font-poppins",
-    devanagariClass: "font-devanagari",
-    bengaliClass: "font-hind",
-    sample: "दीपावली / Diwali",
-    description: "Clean, balanced contemporary look"
-  },
 ];
 
 export const FESTIVE_QUOTES = [

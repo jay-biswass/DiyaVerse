@@ -16,10 +16,13 @@ function GreetingViewerContent() {
     s: "A Friend",
     r: "You",
     rel: "Friend",
+    sr: true,
     l: "English",
     t: "royal-gold",
+    cv: "",
     f: "royal-serif",
-    m: "Wishing you and your family a blessed and illuminated Diwali! May the divine lights guide your journey towards endless happiness and success.",
+    ch: "",
+    m: "May the divine light of Diwali guide your path, bring peace to your heart, and fill your home with prosperity. Wishing you and your family a blessed and beautiful Diwali!",
   });
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -51,17 +54,25 @@ function GreetingViewerContent() {
     try {
       setIsDownloading(true);
       sound.playDiyaSound();
+
+      if (typeof document !== "undefined" && document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
       const dataUrl = await toPng(cardRef.current, {
         cacheBust: true,
-        pixelRatio: 2,
-        quality: 0.98,
+        pixelRatio: 3, // Ultra-high 3x print resolution
+        quality: 1,
       });
       const link = document.createElement("a");
-      link.download = `Diwali_Greeting_${cardData.r || "DiyaVerse"}.png`;
+      const safeName = cardData.r ? String(cardData.r).replace(/[^a-zA-Z0-9]/g, "_") : "DiyaVerse";
+      link.download = `Diwali_Greeting_${safeName}.png`;
       link.href = dataUrl;
       link.click();
     } catch (e) {
       console.error(e);
+      alert("Failed to export card image. Please try again.");
     } finally {
       setIsDownloading(false);
     }
@@ -86,8 +97,11 @@ function GreetingViewerContent() {
           sender={cardData.s}
           recipient={cardData.r}
           relationship={cardData.rel}
+          showRelationship={cardData.sr !== false}
           language={cardData.l}
           template={cardData.t}
+          colorVariant={cardData.cv || ""}
+          customHeader={cardData.ch || ""}
           message={cardData.m}
           cardFont={cardData.f || "royal-serif"}
         />
@@ -101,7 +115,7 @@ function GreetingViewerContent() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-xs sm:text-sm text-[#27100D] bg-gradient-to-r from-[#F5D79D] via-[#D4A64A] to-[#E68A32] shadow-lg hover:scale-105 active:scale-95 transition-all"
         >
           <Download className="w-4 h-4 text-[#8F2028]" />
-          <span>{isDownloading ? "Generating Image..." : "Save Card as PNG"}</span>
+          <span>{isDownloading ? "Generating Image..." : "Save Card as PNG (3x Print Scale)"}</span>
         </button>
 
         <Link
