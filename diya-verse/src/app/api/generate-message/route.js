@@ -1,0 +1,98 @@
+import { NextResponse } from "next/server";
+import { GoogleGenAI } from "@google/genai";
+import { SAMPLE_WISHES } from "@/data/greetings";
+
+export async function POST(request) {
+  try {
+    const body = await request.json();
+    const {
+      sender = "Aarav",
+      recipient = "Priya",
+      relationship = "Friend",
+      language = "English",
+      tone = "Traditional",
+      context = "",
+    } = body;
+
+    // Sanitize and validate lengths
+    const safeSender = String(sender).slice(0, 50).trim() || "A Well-Wisher";
+    const safeRecipient = String(recipient).slice(0, 50).trim() || "Cherished Friend";
+    const safeRelationship = String(relationship).slice(0, 30).trim();
+    const safeLanguage = ["English", "Hindi", "Bengali"].includes(language)
+      ? language
+      : "English";
+    const safeTone = ["Traditional", "Emotional", "Funny", "Professional", "Inspirational"].includes(tone)
+      ? tone
+      : "Traditional";
+    const safeContext = String(context).slice(0, 200).trim();
+
+    const apiKey = process.env.GEMINI_API_KEY;
+
+    // If Gemini API Key is configured, use the official @google/genai SDK
+    if (apiKey && apiKey !== "your_api_key_here") {
+      try {
+        const ai = new GoogleGenAI({ apiKey });
+
+        const prompt = `You are a warm, poetic, and culturally knowledgeable Indian festival greeting writer for the Diwali celebration platform DiyaVerse.
+Write a personalized, beautiful, original Diwali greeting message from ${safeSender} to ${safeRecipient}.
+
+Details:
+- Recipient Relationship: ${safeRelationship}
+- Language: ${safeLanguage} (Write in the actual language script: Devanagari for Hindi, Bengali script for Bengali, Latin script for English)
+- Tone: ${safeTone}
+${safeContext ? `- Special Context or Personal Note: "${safeContext}"` : ""}
+
+Rules:
+1. Make it authentic, heartfelt, and festive.
+2. Infuse rich Diwali symbolism (diyas, lights, victory of goodness, goddess Lakshmi, sweet moments).
+3. Do not include markdown asterisks, quotes around the whole text, or placeholder brackets.
+4. Keep the greeting between 2 to 4 sentences (approx 40-70 words).
+5. Output ONLY the message text.`;
+
+        // Model: gemini-2.5-flash or gemini-1.5-flash
+        const response = await ai.models.generateContent({
+          model: "gemini-2.5-flash",
+          contents: prompt,
+        });
+
+        const generatedText = response.text ? response.text.trim() : null;
+
+        if (generatedText) {
+          return NextResponse.json({
+            success: true,
+            message: generatedText,
+            source: "gemini-2.5-flash",
+          });
+        }
+      } catch (geminiError) {
+        console.warn("Gemini API call notice, falling back gracefully:", geminiError?.message);
+      }
+    }
+
+    // Graceful Intelligent Fallback if API key is not yet set or during offline review
+    const preset =
+      SAMPLE_WISHES[safeLanguage]?.[safeTone] ||
+      SAMPLE_WISHES["English"]["Traditional"];
+
+    let customFallback = "";
+    if (safeLanguage === "Hindi") {
+      customFallback = `प्रिय ${safeRecipient}, दीपावली के इस पावन अवसर पर आपके जीवन में सुख, शांति, समृद्धि और अपार सफलता की कामना करता हूँ। भगवान श्री गणेश और मां लक्ष्मी का आशीर्वाद आप पर सदा बना रहे। शुभ दीपावली! — ${safeSender}`;
+    } else if (safeLanguage === "Bengali") {
+      customFallback = `প্রিয় ${safeRecipient}, শুভ দীপাবলির আন্তরিক প্রীতি ও উষ্ণ শুভেচ্ছা। প্রদীপের আলোয় আপনার জীবন হয়ে উঠুক আনন্দময় ও সাফল্যমণ্ডিত। পরিবারসহ আপনার সুস্বাস্থ্য ও সমৃদ্ধি কামনা করি। — ${safeSender}`;
+    } else {
+      customFallback = `Dearest ${safeRecipient}, on this joyous festival of lights, may every diya illuminate your journey with happiness, good health, and boundless opportunities. Wishing you and your family a truly blessed and prosperous Diwali! With warm regards, ${safeSender}.`;
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: customFallback,
+      source: "diyaverse-festive-engine",
+    });
+  } catch (error) {
+    console.error("API generate-message route error:", error);
+    return NextResponse.json(
+      { error: "Failed to generate festive greeting" },
+      { status: 500 }
+    );
+  }
+}

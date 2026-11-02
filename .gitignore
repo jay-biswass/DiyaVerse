@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+diya-verse/node_modules
+/.pnp
+.pnp.*
+
+# next.js
+.next/
+diya-verse/.next/
+out/
+diya-verse/out/
+build/
+diya-verse/build/
+
+# environment variables
+.env*
+diya-verse/.env*
+!.env.example
+!diya-verse/.env.example
+
+# debug & logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# misc
+.DS_Store
+*.pem

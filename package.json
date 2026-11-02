@@ -1,0 +1,11 @@
+{
+  "name": "diyaverse-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix diya-verse run dev",
+    "build": "npm --prefix diya-verse run build",
+    "start": "npm --prefix diya-verse run start",
+    "lint": "npm --prefix diya-verse run lint"
+  }
+}
