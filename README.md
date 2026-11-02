@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="https://diwali-greeting-delta.vercel.app/">🌐 Live Demo</a> •
+  <a href="https://diwali-greeting-brown.vercel.app/">🌐 Live Demo</a> •
   <a href="#-features">Features</a> •
   <a href="#-getting-started">Installation</a> •
   <a href="#-screenshots">Screenshots</a>
