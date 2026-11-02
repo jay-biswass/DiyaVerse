@@ -2,6 +2,7 @@ import { Playfair_Display, Poppins, Cinzel, Noto_Serif_Devanagari } from "next/f
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { MusicProvider } from "@/context/MusicContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -60,9 +61,11 @@ export default function RootLayout({ children }) {
       className={`${playfair.variable} ${cinzel.variable} ${poppins.variable} ${notoDevanagari.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-poppins selection:bg-[#8F2028] selection:text-[#F5D79D]">
-        <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
+        <MusicProvider>
+          <Navbar />
+          <main className="flex-1 pt-16">{children}</main>
+          <Footer />
+        </MusicProvider>
       </body>
     </html>
   );

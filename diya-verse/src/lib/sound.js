@@ -141,18 +141,9 @@ class SoundSystem {
     }
   }
 
-  // Meditative ambient Indian Tanpura-style festive harmonic drone
+  // Music is now driven by YouTube track Kuq3vDEkWJo
   toggleAmbientMusic() {
-    this.initContext();
-    if (!this.ctx) return false;
-
-    if (this.ambientPlaying) {
-      this.stopAmbientMusic();
-      return false;
-    } else {
-      this.startAmbientMusic();
-      return true;
-    }
+    return false;
   }
 
   startAmbientMusic() {

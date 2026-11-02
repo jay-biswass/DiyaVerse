@@ -18,12 +18,13 @@ import {
   Info 
 } from "lucide-react";
 
+import { useMusic } from "@/context/MusicContext";
+
 function NavbarContent() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [musicActive, setMusicActive] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const { isPlaying: musicActive, isMuted, toggleMusic, toggleMute } = useMusic();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,21 +33,6 @@ function NavbarContent() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMusic = () => {
-    const playing = sound.toggleAmbientMusic();
-    setMusicActive(playing);
-    if (playing) sound.playDiyaSound();
-  };
-
-  const toggleMute = () => {
-    const nextMute = !isMuted;
-    setIsMuted(nextMute);
-    sound.setMuted(nextMute);
-    if (nextMute && musicActive) {
-      setMusicActive(false);
-    }
-  };
 
   const navLinks = [
     { name: "Home", href: "/" },
