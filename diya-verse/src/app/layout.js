@@ -54,9 +54,12 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "64x64" },
+      { url: "/diya-icon.png", type: "image/png" },
     ],
-    apple: "/icon.svg",
+    apple: "/icon.png",
+    shortcut: "/favicon.ico",
   },
 };
 
