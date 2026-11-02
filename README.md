@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="./public/images/diya-verse-banner.png"
+    src="./diya-verse/public/images/diya-verse-banner.png"
     alt="DiyaVerse Banner"
     width="100%"
   />
