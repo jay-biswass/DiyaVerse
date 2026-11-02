@@ -255,7 +255,5 @@ diya-verse/
 └── README.md
 ```
 
-*Note: This is a representative structure. Update it to reflect the actual folders and files in your repository.*
-
 ---
 
