@@ -132,8 +132,6 @@ The visual experience combines traditional Indian motifs, glowing diyas, rangoli
 
 ## 📸 Screenshots
 
-Add screenshots of your actual application here.
-
 | Homepage | Greeting Creator |
 |---|---|
 | ![Homepage](./diya-verse/public/images/homepage.png) | ![Greeting Creator](./diya-verse/public/images/greeting-creator.png) |
